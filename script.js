@@ -16,11 +16,11 @@ async function getGroups() {
 
 function createTable(group) {
   const table = document.createElement("table");
-  table.className = "table table-bordered text-center"; // إضافة كلاس لتوسيط النص
+  table.className = "table table-borderless text-center shadow"; // إضافة كلاس لتوسيط النص
 
   const header = document.createElement("thead");
   header.className = "header";
-  header.innerHTML = `<tr><th colspan="5">${group.group}</th></tr>`;
+  header.innerHTML = `<tr><th colspan="5" class="grouplable" >${group.group}</th></tr>`;
   table.appendChild(header);
 
   const body = document.createElement("tbody");
@@ -38,7 +38,7 @@ function createTable(group) {
   group.table.forEach((team) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-            <td><div><img src="${team.team.crestUrl}" class="flag"> ${team.team.name}</></td>
+            <td><div><img src="${team.team.crest}" class="flag"> ${team.team.tla}</></td>
             <td>${team.won}</td>
             <td>${team.lost}</td>
             <td>${team.draw}</td>
