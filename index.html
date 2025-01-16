@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كأس العالم</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #800020; /* لون التوتي */
+            background-image: url('pattern.png'); /* أضف رابط الصورة هنا */
+            background-size: cover;
+            color: white;
+            text-align: right;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            height: 200px;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+            border-bottom: 10px solid #4b0000; /* لون غامق */
+        }
+        .header h1 {
+            font-size: 40px;
+            font-weight: bolder;
+        }
+        .header h1 span {
+            display: block;
+        }
+        .header h1 .world {
+            font-size: 65px;
+        }
+        .floating-image {
+            position: absolute;
+            top: 40px;
+            left: 30px;
+            height: 200px;
+            z-index:3;
+            filter: drop-shadow(10px 10px 15px rgb(0, 0, 0));
+        }
+        .center-image {
+            display: block;
+            margin: 20px auto;
+            width: 50%;
+            height: auto;
+            }
+    </style>
+</head>
+<body>
+    <img src="logo.png" alt="صورة" class="floating-image"> <!-- أضف رابط الصورة هنا -->
+    <header class="header">
+        <h1>
+            <span>كأس</span>
+            <span class="world">العالم</span>
+        </h1>
+        
+    </header>
+
+    <div class="container">
+        <img src="qatar-word.png" alt="صورة في المنتصف" class="center-image"> <!-- أضف رابط الصورة هنا -->
+    </div>
+</body>
+</html>
