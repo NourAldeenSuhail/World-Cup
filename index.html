@@ -68,6 +68,45 @@
         height: 30px;
         object-fit: cover;
       }
+      .match-row {
+        background-color: #800020; /* لون توتي غامق */
+        color: black;
+        margin: 5px;
+        border-radius: 50px; /* جوانب منحنية بشدة */
+        display: flex;
+        align-items: center; /* أو أي قيمة أخرى تريدها */
+        justify-content: space-between;
+        flex-direction: column;
+      }
+      .match-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-self: center;
+        align-items: center;
+        height: 30px;
+        overflow: visible;
+      }
+
+      .first {
+        margin-left: 40px;
+        color: white;
+      }
+      .second {
+        margin-right: 40px;
+        color: white;
+      }
+      .result {
+        display: flex;
+        justify-content: center; /* توسيط أفقي */
+        align-items: center; /* توسيط عمودي */
+        background-color: white;
+        height: 78px;
+        width: 55%;
+      }
+      .group {
+        z-index: 4;
+      }
     </style>
   </head>
   <body>
@@ -91,6 +130,17 @@
 
       <div id="tables-container" class="row">
         <!-- سيتم إضافة الجداول هنا ديناميكيًا -->
+      </div>
+      <div style="height: 30px"></div>
+
+      <div style="display: flex; flex-direction: row-reverse">
+        <h1 style="direction: rtl; margin: 5px !important">المباريات</h1>
+      </div>
+      <hr />
+      <div style="height: 30px"></div>
+
+      <div id="matches-container" class="row">
+        <!-- سيتم إضافة المباريات هنا ديناميكيًا -->
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

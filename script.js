@@ -70,3 +70,70 @@ async function displayGroups() {
 }
 
 displayGroups();
+
+async function getMatches() {
+  try {
+    const response = await axios.get(`${BASE_URL}/competitions/WC/matches`, {
+      headers: { "X-Auth-Token": API_TOKEN },
+    });
+    return response.data.matches;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+}
+
+function createMatchCard(match) {
+  if (!match.group) return null; // تجاهل المباريات التي ليس لها مجموعة
+  const card = document.createElement("div");
+  card.className = "col-md-12 match-row shadow";
+
+  const matchInfo = document.createElement("div");
+  matchInfo.className = "match-info";
+
+  const homeTeam = document.createElement("div");
+  homeTeam.innerHTML = `<img src="${match.homeTeam.crest}" class="flag"> <div>${match.homeTeam.tla}</div>`;
+  homeTeam.classList.add("first");
+
+  const awayTeam = document.createElement("div");
+  awayTeam.innerHTML = `<img src="${match.awayTeam.crest}" class="flag"> <div>${match.awayTeam.tla}</div>`;
+  awayTeam.classList.add("second");
+
+  const result = document.createElement("div");
+  result.innerHTML = `${match.score.fullTime.home} - ${match.score.fullTime.away}`;
+  result.classList.add("result");
+
+  const group = document.createElement("div");
+  group.innerHTML = `${match.group}`;
+  group.classList.add("group");
+
+  const date = document.createElement("div");
+  date.innerHTML = `${new Date(match.utcDate).toLocaleString()}`;
+
+  matchInfo.appendChild(homeTeam);
+  matchInfo.appendChild(result);
+  matchInfo.appendChild(awayTeam);
+
+  card.appendChild(group);
+  card.appendChild(matchInfo);
+  card.appendChild(date);
+
+  return card;
+}
+
+async function displayMatches() {
+  const matches = await getMatches();
+  if (!matches) {
+    document.getElementById("matches-container").innerHTML =
+      "<p>Failed to load data. Please check your API token and try again.</p>";
+    return;
+  }
+
+  const container = document.getElementById("matches-container");
+
+  matches.forEach((match) => {
+    container.appendChild(createMatchCard(match));
+  });
+}
+
+displayMatches();
